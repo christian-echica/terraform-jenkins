@@ -4,9 +4,11 @@ pipeline {
       PATH = "${PATH}:${getTerraformpath()}"
     }
     stages {
-        stage('terraform init') {
+        stage('terraform init - dev') {
             steps {
                 sh "terraform init"
+                sh "terraform plan"
+                sh "terraform apply --auto-approve"
             }
         }
     }
